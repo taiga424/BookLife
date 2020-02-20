@@ -1,0 +1,27 @@
+.header
+  .header__logo
+    = link_to "BookLife", books_path
+.bookList
+  .bookList__header
+    = "#{@nickname}さんの投稿一覧"
+  %ul.books
+    - @books.each do |book|
+      %li.book
+        .book__image 
+          %img{:src => "#{book.image}", :width => "160", :height => "200"}
+          - if user_signed_in? && current_user.id == book.user.id
+            %ul.more
+              %li.more__list
+                = link_to '詳細', "/books/#{book.id}/", method: :get
+              %li.more__list
+                = link_to '削除', "/books/#{book.id}", method: :delete
+              %li.more__list
+                = link_to '編集', "/books/#{book.id}/edit", method: :get
+          - else
+            %ul.more
+              %li.more__list
+                = link_to '詳細', "/books/#{book.id}/", method: :get
+        .book__title
+          = book.title
+  = paginate(@books)
+

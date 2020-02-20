@@ -1,0 +1,38 @@
+.header
+  .header__logo
+    = link_to "BookLife", books_path
+  - if user_signed_in? && current_user.id == @book.user.id
+    .header__btn
+      = link_to "マイページへ", "/users/#{current_user.id}"
+.contents-show
+  .postName
+    = link_to "#{@book.user.nickname}さんの投稿", "/users/#{@book.user.id}"
+  %section.review
+    %img{:src => "#{@book.image}", :width => "350", :height => "400"}
+    .desc
+      %h1.category#category-title
+        = @book.title
+      %p.category
+        = "著：#{@book.author}"
+      %p.category
+        = "出版社：#{@book.publisher}"
+      .category#category-review
+        = simple_format(@book.review)
+  .container
+    - if current_user
+      = form_with(model: [@book, @comment], local: true) do |form|
+        = form.text_area :text, placeholder: "コメントする", rows: "2"
+        = form.submit "送信"
+    - else
+      %strong
+        %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+    .comments
+      %h4 ＜コメント一覧＞
+      - if @comments
+        - @comments.each do |comment|
+          %p
+            %strong
+              = link_to comment.user.nickname, "/users/#{comment.user_id}"
+            = comment.text
+
+

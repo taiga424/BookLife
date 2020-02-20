@@ -1,0 +1,136 @@
+
+.header {
+  height: 50px;
+  width: 100%;
+  background-color: #0f0;
+  &__logo {
+  height: 100%;
+  width: 180px;
+  font-size: 30px;
+  text-align: center;
+  float: left;
+  line-height: 50px;
+  }
+  &__btn {
+    float: right;
+    font-size: 15px;
+    margin-top: 15px;
+    margin-right: 15px;
+    padding: 0 15px;
+    border: 1px solid;
+    border-radius: 10px;
+  }
+}
+
+.form {
+  height: 120px;
+  width: 100%;
+  padding-top: 30px;
+  .searchForm {
+    height: 80px;
+    width: 800px;
+    border: 3px solid #808080;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    .form-contents{
+      display: flex;
+      align-items: center;
+      &__name {
+        font-size: 20px;
+        margin: 0 30px;
+      } 
+      &__text {
+        height: 40px;
+        width: 530px;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: cursive;
+      }
+      &__btn {
+        border: 1px solid #0f0;
+        border-radius: 5px;
+        background-color: #0f0;
+        height: 40px;
+        width: 60px;
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+.bookList {
+  height: 700px;
+  width: 100%;
+  padding: 40px;
+  box-sizing: border-box;
+  &__header {
+    height: 40px;
+    background-color: #ff8c00;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    margin-bottom: 30px;
+  }
+  .books {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-column-gap: 25px;
+    grid-row-gap: 5px;
+    .book{
+      padding: 10px;
+      margin: 0 25px;
+      &__title {
+        text-align: center;
+        font-size: 23px;
+        font-weight: bold;
+        width: 170px;
+        height: 30px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      &__image {
+        img {
+          border: 5px solid #0f0;
+          border-radius: 50px;
+        }
+        a {
+          display: block;
+          margin: 0 auto;
+          width: 40px;
+          text-align: center;
+          color: #fff;
+          background-color: #4682b4;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}
+
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+html {
+  background: url("https://www.pakutaso.com/shared/img/thumb/ELL75_yousyohondana20120620_TP_V.jpg") left top no-repeat fixed;
+  background-size: cover;
+  background-color:rgba(255,255,255,0.7);
+  background-blend-mode: lighten;
+}
+
+.more {
+  display: flex;
+  justify-content: space-around;
+}

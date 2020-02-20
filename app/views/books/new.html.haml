@@ -1,0 +1,15 @@
+.header
+  .header__logo
+    = link_to "BookLife", books_path 
+.contents
+  .container
+    = form_with(model: @book, local: true) do |form|
+      %h3
+        新規投稿
+      = form.text_field :title, autofocus: true, placeholder: "タイトル(必須)"
+      = form.text_field :author, placeholder: "著者"
+      = form.text_field :publisher, placeholder: "出版社"
+      = form.text_field :image, placeholder: "画像のURL(必須)"
+      = form.text_area :review, placeholder: "レビューを書く(必須)" , rows: "10"
+      .postBtn 
+        = form.submit "投稿する"

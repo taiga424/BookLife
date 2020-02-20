@@ -1,0 +1,38 @@
+.contents-show {
+  padding: 50px;
+  .postName {
+    width: 1000px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+  }
+  .review {
+    width: 1000px;
+    margin: 5px auto;
+    padding: 30px;
+    display: flex;
+    background-color: #fff;
+    img {
+      margin-right: 30px;
+      
+    }
+    .desc {
+      width: 400px;
+      #category-title {
+        font-size: 35px;
+        font-weight: bolder;
+        margin-bottom: 50px;
+      }
+      .category {
+        border-bottom: 2px double #0f0;
+        margin-bottom: 30px;
+        font-size: 15px;
+        width: 620px;
+      }
+      #category-review {
+        margin-top: 50px;
+        font-size: 19px;
+      }
+    }
+  }
+}
