@@ -16,7 +16,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    book = Book.find(params[:id])
+    book = Book.find(params[:id]) 
     book.destroy
     redirect_to "/users/#{current_user.id}"
   end
@@ -31,6 +31,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = Book.find(params[:id])
     @comment = Comment.new
     @comments = @book.comments.includes(:user)
   end

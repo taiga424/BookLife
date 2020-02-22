@@ -1,4 +1,3 @@
-
 .header {
   height: 50px;
   width: 100%;
@@ -34,7 +33,6 @@
     border-radius: 10px;
     margin: 0 auto;
     display: flex;
-    align-items: center;
     .form-contents{
       display: flex;
       align-items: center;
@@ -62,7 +60,7 @@
 }
 
 .bookList {
-  height: 700px;
+  height: 100vh;
   width: 100%;
   padding: 40px;
   box-sizing: border-box;
@@ -103,20 +101,10 @@
           border: 5px solid #0f0;
           border-radius: 50px;
         }
-        a {
-          display: block;
-          margin: 0 auto;
-          width: 40px;
-          text-align: center;
-          color: #fff;
-          background-color: #4682b4;
-          border-radius: 10px;
-        }
       }
     }
   }
 }
-
 
 a {
   text-decoration: none;
@@ -126,11 +114,27 @@ a {
 html {
   background: url("https://www.pakutaso.com/shared/img/thumb/ELL75_yousyohondana20120620_TP_V.jpg") left top no-repeat fixed;
   background-size: cover;
-  background-color:rgba(255,255,255,0.7);
+  background-color:rgba(255,255,255,0.8);
   background-blend-mode: lighten;
 }
-
-.more {
-  display: flex;
-  justify-content: space-around;
+.contents {
+  height: 100%;
+  width: 100%;
+  .container {
+    height: 400px;
+    width: 700px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    input {
+      box-sizing: border-box;
+      height: 50px;
+      width: 100%;
+      margin: 3px;
+      border-radius: 5px;
+      border: 1px solid;
+      font-size: large;
+      font-weight: bold;
+    }
+  }
 }

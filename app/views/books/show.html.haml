@@ -1,5 +1,6 @@
 .header
   .header__logo
+    = icon('fas', 'book')
     = link_to "BookLife", books_path
   - if user_signed_in? && current_user.id == @book.user.id
     .header__btn
@@ -20,19 +21,12 @@
         = simple_format(@book.review)
   .container
     - if current_user
-      = form_with(model: [@book, @comment], local: true) do |form|
-        = form.text_area :text, placeholder: "コメントする", rows: "2"
-        = form.submit "送信"
+      = render partial: 'comments/form', locals: { comment: @comment, book: @book }
     - else
       %strong
         %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
-    .comments
-      %h4 ＜コメント一覧＞
-      - if @comments
-        - @comments.each do |comment|
-          %p
-            %strong
-              = link_to comment.user.nickname, "/users/#{comment.user_id}"
-            = comment.text
-
-
+    #comments_area
+      .comments
+        %h4.comment ＜コメント一覧＞
+        - if @comments
+          = render partial: 'comments/index', locals: { comments: @comments }

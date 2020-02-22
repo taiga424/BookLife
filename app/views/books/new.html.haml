@@ -1,15 +1,23 @@
 .header
   .header__logo
+    = icon('fas', 'book')
     = link_to "BookLife", books_path 
-.contents
-  .container
-    = form_with(model: @book, local: true) do |form|
+.newContents
+  .newContainer
+    = form_with(model: @book, local: true) do |f|
       %h3
         新規投稿
-      = form.text_field :title, autofocus: true, placeholder: "タイトル(必須)"
-      = form.text_field :author, placeholder: "著者"
-      = form.text_field :publisher, placeholder: "出版社"
-      = form.text_field :image, placeholder: "画像のURL(必須)"
-      = form.text_area :review, placeholder: "レビューを書く(必須)" , rows: "10"
+      = f.text_field :title, autofocus: true, placeholder: "タイトル＊"
+      = f.text_field :author, placeholder: "著者"
+      = f.text_field :publisher, placeholder: "出版社"
+      .image
+        = f.text_field :image, placeholder: "画像を選択＊"
+        %label
+          = icon('fa','image',class: 'icon')
+          .image__file
+            = f.file_field :image
+      = f.text_area :review, placeholder: "レビューを書く＊" , rows: "10"
+      %h4
+        *は必須
       .postBtn 
-        = form.submit "投稿する"
+        = f.submit "投稿する"

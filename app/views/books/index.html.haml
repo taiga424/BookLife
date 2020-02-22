@@ -1,12 +1,12 @@
 .header
   .header__logo
-    = link_to books_path do
-      BookLife
+    = icon('fas', 'book')
+    = link_to "BookLife", books_path
   - if user_signed_in?
     .header__btn
       = link_to "ログアウト", destroy_user_session_path, method: :delete
     .header__btn
-      = link_to "新規投稿", new_book_path 
+      = link_to "新規投稿", new_book_path
     .header__btn
       = link_to "#{current_user.nickname}", "/users/#{current_user.id}"
   - else
@@ -17,15 +17,18 @@
 
 .form
   .searchForm
-    = form_with(url: "/books/searches", local: true, method: :get, class: "form-contents") do |form|
-      %h4.form-contents__name
-        投稿を検索
-      = form.text_field :keyword, placeholder: "タイトルを入力", autofocus: true, class: "form-contents__text"
-      = form.submit "検索", class: "form-contents__btn"
+    = form_with(url: "/books/searches", local: true, method: :get, class: "form-contents") do |f|
+      %h4.form-contents__name 投稿を検索
+      = f.text_field :keyword, placeholder: "タイトルを入力", autofocus: true, class: "form-contents__text"
+      = f.submit "検索", class: "form-contents__btn"
 .bookList
-  .bookList__header
-    投稿一覧
+  .bookList__header 投稿一覧
   %ul.books
     - @books.each do |book|
-      = render partial: "book", locals: { book: book }
+      %li.book
+        .book__image
+          = link_to "/books/#{book.id}/", method: :get do
+            %img{:src => "#{book.image}", :width => "160", :height => "200"}
+        .book__title
+          = book.title
   = paginate(@books)

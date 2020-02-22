@@ -1,5 +1,6 @@
 .header
   .header__logo
+    = icon('fas', 'book')
     = link_to books_path do
       BookLife
   - if user_signed_in?
@@ -17,14 +18,19 @@
 
 .form
   .searchForm
-    = form_with(url: "/books/searches", local: true, method: :get, class: "form-contents") do |form|
+    = form_with(url: "/books/searches", local: true, method: :get, class: "form-contents") do |f|
       %h4.form-contents__name
         投稿を検索
-      = form.text_field :keyword, placeholder: "タイトルを入力", autofocus: true, class: "form-contents__text"
-      = form.submit "検索", class: "form-contents__btn"
+      = f.text_field :keyword, placeholder: "タイトルを入力", autofocus: true, class: "form-contents__text"
+      = f.submit "検索", class: "form-contents__btn"
 .bookList
   .bookList__header
     投稿一覧
   %ul.books
     - @books.each do |book|
-      = render partial: "books/book", locals: { book: book }
+      %li.book
+        .book__image
+          = link_to "/books/#{book.id}/", method: :get do
+            %img{:src => "#{book.image}", :width => "160", :height => "200"}
+        .book__title
+          = book.title

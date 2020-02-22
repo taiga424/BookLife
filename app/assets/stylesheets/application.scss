@@ -1,4 +1,9 @@
 @import "reset";
-@import "books";
-@import "new.books";
-@import "show.books";
+@import "config/colors";
+@import "books/books";
+@import "users";
+@import "books/new";
+@import "books/show";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "modules/flash";

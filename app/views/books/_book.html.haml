@@ -1,8 +1,0 @@
-%li.book
-  .book__image 
-    %img{:src => "#{book.image}", :width => "160", :height => "200"}
-    %ul
-      %li
-        = link_to '詳細', "/books/#{book.id}/", method: :get
-  .book__title
-    = book.title

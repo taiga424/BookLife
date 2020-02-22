@@ -1,0 +1,3 @@
+= form_with(model: [@book, @comment], local: true, id: "new_comment") do |f|
+  = f.text_area :text, placeholder: "コメントする", rows: "2", class: "textbox"
+  = f.submit "送信", class: "form__submit"
