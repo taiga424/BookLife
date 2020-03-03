@@ -1,22 +1,51 @@
-.header
+.header#posts-header
   .header__logo
     = icon('fas', 'book')
-    = link_to "BookLife", books_path 
-.newContents
-  .newContainer
+    = link_to "BookLife", books_path
+  - if user_signed_in?
+    %ul.menu
+      %li.menu__single
+        = icon('fas', 'user')
+        = "#{current_user.nickname}"
+        %ul.menu__second-level
+          %li
+            = link_to "Logout", destroy_user_session_path, method: :delete
+          %li
+            = link_to "My page", "/users/#{current_user.id}"
+  - else
+    %ul.menu
+      %li.menu__single
+        = icon('fas', 'user')
+        %ul.menu__second-level
+          %li
+            = link_to "ログイン", new_user_session_path
+          %li
+            = link_to "新規登録", new_user_registration_path
+.posts
+  .post
     = form_with(model: @book, local: true) do |f|
       %h3
         新規投稿
       = f.text_field :title, autofocus: true, placeholder: "タイトル＊"
-      = f.text_field :author, placeholder: "著者"
+      = f.text_field :author, placeholder: "著者or作者"
       = f.text_field :publisher, placeholder: "出版社"
       .image
-        = f.text_field :image, placeholder: "画像を選択＊"
         %label
-          = icon('fa','image',class: 'icon')
           .image__file
             = f.file_field :image
-      = f.text_area :review, placeholder: "レビューを書く＊" , rows: "10"
+          .preview
+            画像を選択＊
+      .categories
+        .categories__name
+          カテゴリを選択
+        = f.collection_check_boxes(:category_ids, Category.all, :id, :name, {class: "bookGroup"}) do |category|
+          .category
+            = category.label do
+              .category__box
+                = category.check_box
+              .category__text
+                = category.text
+      = f.text_area :review, placeholder: "レビューを書く(最大10行)＊" , rows: "10"
       %h4
         *は必須
       .postBtn 

@@ -1,4 +1,4 @@
-- @comments.each do |comment|
+- comments.each do |comment|
   .comment-info
     %strong
       = link_to "#{comment.user.nickname} :", user_path(comment.user.id), class: "comment-user"

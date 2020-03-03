@@ -2,21 +2,30 @@
   .header__logo
     = icon('fas', 'book')
     = link_to "BookLife", books_path
-.bookList
-  .bookList__header
-    = "#{@nickname}さんの投稿一覧"
+  %ul.menu
+    %li.menu__single
+      = icon('fas', 'user')
+      = "#{current_user.nickname}"
+      %ul.menu__second-level
+        %li
+          = link_to "Logout", destroy_user_session_path, method: :delete
+        %li
+          = link_to "New post", new_book_path
+        %li
+          = link_to "My page", "/users/#{current_user.id}"
+.bookList#bookList-user
+  - if user_signed_in? && current_user.id.to_s == params[:id]
+    .bookList__header
+      = "My Posts"
+  - else
+    .bookList__header
+      = "#{@nickname}さんの投稿"
   %ul.books
     - @books.each do |book|
       %li.book
         .book__image
-          = link_to "/books/#{book.id}/", method: :get do
+          = link_to "/books/#{book.id}/", method: :get , data: {"turbolinks" => false}, class: "seller_btn" do
             %img{:src => "#{book.image}", :width => "160", :height => "200"}
-            - if user_signed_in? && current_user.id == book.user.id
-              %ul.more
-                %li.more__list
-                  = link_to '削除', "/books/#{book.id}", method: :delete
-                %li.more__list
-                  = link_to '編集', "/books/#{book.id}/edit", method: :get
         .book__title
           = book.title
   = paginate(@books)

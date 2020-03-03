@@ -67,3 +67,4 @@ gem "font-awesome-sass"
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
+gem 'pry-rails'

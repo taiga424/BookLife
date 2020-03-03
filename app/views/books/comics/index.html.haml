@@ -1,0 +1,47 @@
+.header
+  .header__logo
+    = icon('fas', 'book')
+    = link_to "BookLife", books_path
+  - if user_signed_in?
+    %ul.menu
+      %li.menu__single
+        = icon('fas', 'user')
+        = "#{current_user.nickname}"
+        %ul.menu__second-level
+          %li
+            = link_to "Logout", destroy_user_session_path, method: :delete
+          %li
+            = link_to "New post", new_book_path, data: {"turbolinks" => false}, class: "seller_btn" 
+          %li
+            = link_to "My page", "/users/#{current_user.id}"
+  - else
+    %ul.menu
+      %li.menu__single
+        = icon('fas', 'user')
+        %ul.menu__second-level
+          %li
+            = link_to "ログイン", new_user_session_path
+          %li
+            = link_to "新規登録", new_user_registration_path
+.bookList
+  .bookList__title 
+    Books
+    %ul.menu
+      %li.menu__single
+        = icon('fas', 'book-reader')
+        絞り込み
+        %ul.menu__second-level
+          %li
+            = link_to "単行本", books_tankobons_path
+          %li
+            = link_to "文庫本", books_bunkos_path       
+  .bookList__header 
+    コミック
+  %ul.books
+    - @books.each do |book|
+      %li.book
+        .book__image
+          = link_to "/books/#{book.id}/", method: :get ,data: {"turbolinks" => false}, class: "seller_btn" do
+            %img{:src => "#{book.image}", :width => "160", :height => "200"}
+        .book__title
+          = book.title

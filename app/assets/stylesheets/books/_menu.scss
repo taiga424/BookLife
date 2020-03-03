@@ -1,0 +1,193 @@
+
+.header {
+  .menu {
+    float: right;
+    margin: 30px 30px 0 0;
+    font-weight: bolder;
+  }
+  .menu > li {
+    float: left;
+    width: 130px;
+    height: 50px;
+    line-height: 50px;
+  }
+  .menu > li a {
+    display: block;
+    color: #fff;
+  }
+  .menu > li a:hover {
+    color: #999;
+  }
+  ul.menu__second-level {
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+  }
+  li.menu__single ul.menu__second-level {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+  .menu__second-level li {
+    border-top: 1px solid #111;
+  }
+  .menu > li.menu__single {
+    text-align: center;
+    position: relative;
+    font-size: 15px;
+    color: #fff;
+  }
+  
+  li.menu__single:hover ul.menu__second-level {
+    top: 50px;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+
+.bookList {
+  &__title {
+    .menu {
+      float: right;
+      margin-top: 30px;
+      font-weight: bolder;
+      position: relative;
+      height: 30px;
+      line-height: 30px;
+    }
+    .menu > li {
+      float: left;
+      width: 80px;
+      height: 30px;
+      line-height: 30px;
+    }
+    .menu > li a {
+      display: block;
+      color: #111;
+    }
+    .menu > li a:hover {
+      color: #999;
+    }
+    ul.menu__second-level {
+      visibility: hidden;
+      opacity: 0;
+      z-index: 1;
+    }
+    .menu__second-level li {
+      border-top: 1px solid #111;
+    }
+    .init-bottom:after {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin: 0 0 0 15px;
+      border-right: 1px solid #111;
+      border-bottom: 1px solid #111;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    .menu > li.menu__single {
+      text-align: center;
+      position: relative;
+      font-size: 15px;
+      color: #111;
+    }
+    li.menu__single ul.menu__second-level {
+      position: absolute;
+      top: 40px;
+      width: 100%;
+      -webkit-transition: all .2s ease;
+      transition: all .2s ease;
+    }
+    li.menu__single:hover ul.menu__second-level {
+      top: 50px;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+@media screen and (min-width:768px) and ( max-width:1024px) {
+  .header {
+    .menu {
+      margin: 25px 25px 0 0;
+    }
+    .menu > li {
+      width: 80px;
+      height: 35px;
+      line-height: 35px;
+    }
+    .menu > li.menu__single {
+      font-size: 13px;
+    }
+    
+    li.menu__single:hover ul.menu__second-level {
+      top: 40px;
+    }
+  }
+  .bookList {
+    &__title {
+      .menu {
+        margin: 23px 5px 0 0;
+      }
+      .menu > li {
+        width: 80px;
+        height: 35px;
+        line-height: 35px;
+      }
+      .menu > li.menu__single {
+        font-size: 14px;
+      }
+      
+      li.menu__single:hover ul.menu__second-level {
+        top: 40px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:767px) { 
+  .header {
+    .menu {
+      width: 65px;
+      margin: 18px 18px 0 0;
+    }
+    .menu > li {
+      width: 65px;
+      height: 15px;
+      line-height: 15px;
+    }
+    .menu > li.menu__single {
+      font-size: 6px;
+    }
+    
+    li.menu__single:hover ul.menu__second-level {
+      top: 20px;
+    }
+  }
+  .bookList {
+    &__title {
+      .menu {
+        margin-top: 40px;
+      }
+      .menu > li {
+        width: 60px;
+        height: 20px;
+        line-height: 20px;
+      }
+      .menu > li.menu__single {
+        font-size: 11px;
+        bottom: 17px;
+      }
+      
+      li.menu__single:hover ul.menu__second-level {
+        top: 20px
+      }
+    }
+  }
+}

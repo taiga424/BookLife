@@ -2,8 +2,12 @@
   .header__logo
     = icon('fas', 'book')
     = link_to "BookLife", books_path
-  .header__btn
-    = link_to "ログイン", new_user_session_path
+  %ul.menu
+    %li.menu__single
+      = icon('fas', 'user')
+      %ul.menu__second-level
+        %li
+          = link_to "ログイン", new_user_session_path
 .contents.row
   .container
     %h2 Sign up

@@ -1,96 +1,170 @@
 .header {
-  height: 50px;
-  width: 100%;
-  background-color: #0f0;
+  background-image: url("/image1.jpg");
+  background-size: cover;
+  height: 240px;
   &__logo {
-  height: 100%;
-  width: 180px;
-  font-size: 30px;
-  text-align: center;
-  float: left;
-  line-height: 50px;
+    font-family: $mainFontFamily;
+    padding-top: 20px;
+    padding-left: 50px;
+    float: left;
+    a {
+      color: #fff;
+      font-size: 35px;
+    }
+    i {
+      color: #fff;
+      font-size: 30px;
+    }
   }
-  &__btn {
-    float: right;
-    font-size: 15px;
-    margin-top: 15px;
-    margin-right: 15px;
-    padding: 0 15px;
-    border: 1px solid;
-    border-radius: 10px;
-  }
-}
-
-.form {
-  height: 120px;
-  width: 100%;
-  padding-top: 30px;
-  .searchForm {
-    height: 80px;
-    width: 800px;
-    border: 3px solid #808080;
-    background-color: #fff;
-    border-radius: 10px;
-    margin: 0 auto;
-    display: flex;
-    .form-contents{
+  .form {
+    width: 100%;
+    position: absolute;
+    top: 110px;
+    .searchForm {
+      height: 80px;
+      width: 800px;
+      border: 3px solid #808080;
+      background-color: #f5f5f5;
+      border-radius: 10px;
+      margin: 0 auto;
       display: flex;
-      align-items: center;
-      &__name {
-        font-size: 20px;
-        margin: 0 30px;
-      } 
-      &__text {
-        height: 40px;
-        width: 530px;
-        font-weight: bold;
-        font-size: 20px;
-        font-family: cursive;
-      }
-      &__btn {
-        border: 1px solid #0f0;
-        border-radius: 5px;
-        background-color: #0f0;
-        height: 40px;
-        width: 60px;
-        margin-left: 5px;
+      .form-contents{
+        display: flex;
+        align-items: center;
+        &__name {
+          font-size: 20px;
+          margin: 0 30px;
+        } 
+        &__text {
+          height: 40px;
+          width: 530px;
+          font-weight: bold;
+          font-size: 20px;
+          font-family: cursive;
+        }
+        &__btn {
+          background: #00bfff;
+          color: #FFF;
+          border-bottom: solid 4px #627295;
+          border-radius: 3px;
+          height: 40px;
+          width: 60px;
+          margin-left: 5px;
+        }
+        input:active {
+          -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+          border-bottom: none;
+        }
       }
     }
   }
 }
-
 .bookList {
-  height: 100vh;
-  width: 100%;
-  padding: 40px;
-  box-sizing: border-box;
-  &__header {
-    height: 40px;
-    background-color: #ff8c00;
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 40px;
+  padding: 50px 50px 20px 50px;
+  &__title {
+    width: 100%;
+    font-size: 30px;
+    color: #111;
+    padding-bottom: 20px;
+    border-bottom: double 2px#696969;
+    font-weight: bolder;
+    font-family: $mainFontFamily
+  }
+  .bookList__rankHeader {
+    width: 100%;
+    font-size: 20px;
+    color: #111;
+    padding-top: 50px;
+    margin-left: 10px;
+    font-weight: bolder; 
+    font-family: $mainFontFamily
+  }
+  .bookList__rankHeader:before {
+    content: "";
+    padding-right: 8px;
+    border-left: 8px solid #b0c4de;
+  }
+  
+  .rankBooks li:before {
+    content: counter(rank);
+    counter-increment: rank;
+    width: 50px;
+    height: 50px;
+    margin: 0 5px 0 0;
+    padding:5px 10px;
+    border-radius: 50%;
+    background: #30b0d8;
     color: #fff;
+    text-align: center;
+    z-index: 1;
+  }
+  .rankBooks li {
+    padding: 10px;
+  }
+
+  .rankBooks {
+    display: flex;
+    counter-reset: rank;
+    padding: 30px;
+    .rankBook {
+      &__image {
+        margin: 0 30px;
+        a {
+          text-align: center;
+        }
+        img {
+          border: 3px solid #0f0;
+          border-radius: 5px;
+        }
+      }
+      &__user {
+        margin-top: 10px;
+        font-size: 13px;
+        text-align: left;
+      }
+      &__title {
+        width: 160px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: large;
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+  }
+  &__header {
+    width: 100%;
+    padding-top: 30px;
     margin-bottom: 30px;
+    margin-left: 10px;
+    font-size: 20px;
+    color: #111;
+    font-weight: bolder; 
+    font-family: $mainFontFamily
+  }
+  .bookList__header:before {
+    content: "";
+    padding-right: 8px;
+    border-left: 8px solid #b0c4de;
   }
   .books {
-    width: 1000px;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-columns: 200px 200px 200px 200px; 
     grid-column-gap: 25px;
-    grid-row-gap: 5px;
-    .book{
-      padding: 10px;
-      margin: 0 25px;
+    grid-row-gap: 20px;
+    .book {
+      margin-bottom: 60px;
       &__title {
+        margin-top: 10px;
         text-align: center;
-        font-size: 23px;
+        font-size: 20px;
         font-weight: bold;
-        width: 170px;
+        width: 100%;
         height: 30px;
         white-space: nowrap;
         overflow: hidden;
@@ -99,10 +173,21 @@
       &__image {
         img {
           border: 5px solid #0f0;
-          border-radius: 50px;
+          border-radius: 5px;
+          margin-left: 20px;
         }
       }
     }
+  }
+}
+.footer {
+  text-align: center;
+  height: 40px;
+  font-size: 10px;
+  line-height: 40px;
+  background-color: #767671;
+  a {
+    color: #fff;
   }
 }
 
@@ -111,12 +196,10 @@ a {
   color: black;
 }
 
-html {
-  background: url("https://www.pakutaso.com/shared/img/thumb/ELL75_yousyohondana20120620_TP_V.jpg") left top no-repeat fixed;
-  background-size: cover;
-  background-color:rgba(255,255,255,0.8);
-  background-blend-mode: lighten;
+body {
+  background-color: #f5f5f5;
 }
+
 .contents {
   height: 100%;
   width: 100%;
@@ -135,6 +218,255 @@ html {
       border: 1px solid;
       font-size: large;
       font-weight: bold;
+    }
+  }
+}
+#bookList-user {
+  padding: 50px 50px 100px 50px;
+}
+
+@media screen and (min-width:768px) and ( max-width:1024px) {
+  .header {
+    height: 200px;
+    &__logo {
+      padding-top: 15px;
+      padding-left: 40px;
+      a {
+        font-size: 31px;
+      }
+      i {
+        font-size: 26px;
+      }
+    }
+    .form {
+      position: absolute;
+      top: 100px;
+      .searchForm {
+        height: 60px;
+        width: 550px;
+        border: 2px solid #808080;
+        .form-contents {
+          &__name {
+            font-size: 13px;
+            margin: 0 10px;
+          }
+          &__text {
+            height: 30px;
+            width: 390px;
+            font-size: 15px;
+          }
+          &__btn {
+            height: 30px;
+            width: 50px;
+            margin-left: 3px;
+          }
+        }
+      }
+    }
+  }
+  .bookList {
+    padding: 40px 40px 10px 40px;
+    &__title {
+      font-size: 26px;
+      padding-bottom: 25px;
+    }
+    .bookList__rankHeader {
+      font-size: 17px;
+      padding-top: 40px;
+      margin-left: 7px;
+    }
+    .bookList__rankHeader::before {
+      padding-right: 5px;
+      border-left: 5px solid #b0c4de;
+    }
+    .rankBooks li:before {
+      margin: 0 3px 0 0;
+      padding: 3px 7px;
+    }
+    .rankBooks li {
+      padding: 5px;
+    }
+    .rankBooks  {
+      padding: 20px;
+      width: 100%;
+      .rankBook {
+        margin: 0 auto;
+        width: calc(100%/5);
+        &__image {
+          margin-left: 17px;
+          img {
+
+            border: 3px solid #0f0;
+            width: 85px;
+            height: 120px;
+          }
+        }
+        &__user {
+          margin-top: 6px;
+          font-size: 11px;
+        }
+        &__title {
+          width: 120px;
+          margin: 0 auto;
+        }
+      }
+    }
+    &__header {
+      width: 100%;
+      margin-bottom: 40px;
+      margin-left: 5px;
+      font-size: 19px;
+    }
+    .bookList__header:before {
+      padding-right: 6px;
+      border-left: 6px solid #b0c4de;
+    }
+    .books {
+      grid-template-columns: 160px 160px 160px; 
+      grid-column-gap: 25px;
+      grid-row-gap: 30px;
+      .book {
+        margin: 0;
+        padding: 0;
+        &__image {
+          img {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width:767px) { 
+  .header {
+    height: 150px;
+    &__logo {
+      padding-top: 10px;
+      padding-left: 25px;
+      a {
+        font-size: 20px;
+      }
+      i {
+        font-size: 15px;
+      }
+    }
+    .form {
+      position: absolute;
+      top: 85px;
+      .searchForm {
+        height: 40px;
+        width: 320px;
+        border: 1px solid #808080;
+        .form-contents {
+          &__name {
+            font-size: 11px;
+            margin: 0 8px;
+          }
+          &__text {
+            height: 25px;
+            width: 190px;
+            font-size: 12px;
+          }
+          &__btn {
+            height: 25px;
+            width: 40px;
+            margin-left: 4px;
+          }
+        }
+      }
+    }
+  }
+  .bookList {
+    padding: 20px 20px 5px 20px;
+    &__title {
+      font-size: 20px;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+    }
+    .bookList__rankHeader {
+      font-size: 16px;
+      padding-top: 20px;
+      margin-left: 4px;
+    }
+    .bookList__rankHeader::before {
+      padding-right: 4px;
+      border-left: 4px solid #b0c4de;
+    }
+    .rankBooks li:before {
+      margin: 0 3px 0 0;
+      padding: 3px 7px;
+    }
+    .rankBooks li {
+      padding: 3px;
+    }
+    .rankBooks  {
+      padding: 13px;
+      display: grid;
+      grid-template-rows: 120px;
+      grid-template-columns: 1fr; 
+      .rankBook {
+        margin: 0 auto;
+        &__image {
+          margin-left: 25px;
+          img {
+            border: 1px solid #0f0;
+            width: 70px;
+            height: 90px;
+            float: left;
+          }
+        }
+        &__user {
+          float: left;
+          width: 130px;
+          margin-top: 20px;
+          margin-left: 20px;
+          font-size: 14px;
+        }
+        &__title {
+          width: 150px;
+          margin: 0 auto;
+          font-size: 16px;
+        }
+      }
+    }
+    &__header {
+      margin-bottom: 20px;
+      
+      margin-left: 4px;
+      font-size: 16px;
+    }
+    .bookList__header:before {
+      padding-right: 4px;
+      border-left: 4px solid #b0c4de;
+    }
+    .books {
+      padding: 20px;
+      margin: 0 auto;
+      grid-template-columns: 110px 110px; 
+      grid-row-gap: 80px;
+      margin-bottom: 50px;
+      .book {
+        height: 100px;
+        width: 70px;
+        padding: 0;
+        margin: 0;
+        &__title {
+          font-size: 17px;
+          width: 110px;
+          height: 30px;
+        }
+        &__image {
+          margin: 0 auto;
+          img {
+            margin: 0;
+            width: 110px;
+            height: 130px;
+            border: 3px solid #0f0;
+          }
+        }
+      }
     }
   }
 }

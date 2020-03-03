@@ -2,12 +2,36 @@
   .header__logo
     = icon('fas', 'book')
     = link_to "BookLife", books_path
-  - if user_signed_in? && current_user.id == @book.user.id
-    .header__btn
-      = link_to "マイページへ", "/users/#{current_user.id}"
+  - if user_signed_in?
+    %ul.menu
+      %li.menu__single
+        = icon('fas', 'user')
+        = "#{current_user.nickname}"
+        %ul.menu__second-level
+          %li
+            = link_to "Logout", destroy_user_session_path, method: :delete
+          %li
+            = link_to "New post", new_book_path, data: {"turbolinks" => false}, class: "seller_btn" 
+          %li
+            = link_to "My page", "/users/#{current_user.id}"
+  - else
+    %ul.menu
+      %li.menu__single
+        = icon('fas', 'user')
+        %ul.menu__second-level
+          %li
+            = link_to "ログイン", new_user_session_path
+          %li
+            = link_to "新規登録", new_user_registration_path
 .contents-show
   .postName
     = link_to "#{@book.user.nickname}さんの投稿", "/users/#{@book.user.id}"
+  - if user_signed_in? && current_user.id == @book.user.id
+    %ul.more
+      %li.more__list
+        = link_to '削除', "/books/#{@book.id}", class: "btn", method: :delete, data: { confirm: '削除してよろしいですか？' }
+      %li.more__list
+        = link_to '編集', "/books/#{@book.id}/edit", class: "btn", method: :get
   %section.review
     %img{:src => "#{@book.image}", :width => "350", :height => "400"}
     .desc
@@ -17,8 +41,19 @@
         = "著：#{@book.author}"
       %p.category
         = "出版社：#{@book.publisher}"
+      - @book.categories.each do |category|
+        %p.category
+          = "【カテゴリー】#{category.name}"
       .category#category-review
         = simple_format(@book.review)
+      .item-button-container
+        .item-button-container__left
+        - if current_user
+          = render partial: 'likes/like', locals: { book: @book, books: @books, likes: @likes, like: @like}
+        - else
+          %strong
+            %p ※※※ この機能には新規登録/ログインが必要です ※※※
+    #comments_area
   .container
     - if current_user
       = render partial: 'comments/form', locals: { comment: @comment, book: @book }
@@ -26,7 +61,9 @@
       %strong
         %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
     #comments_area
-      .comments
-        %h4.comment ＜コメント一覧＞
+      .comments_header
+        ＜コメント一覧＞
+      .comments 
+        .comment
         - if @comments
           = render partial: 'comments/index', locals: { comments: @comments }

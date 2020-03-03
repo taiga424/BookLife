@@ -1,36 +1,45 @@
 .header
   .header__logo
     = icon('fas', 'book')
-    = link_to books_path do
-      BookLife
+    = link_to "BookLife", books_path
   - if user_signed_in?
-    .header__btn
-      = link_to "ログアウト", destroy_user_session_path, method: :delete
-    .header__btn
-      = link_to "新規投稿", new_book_path 
-    .header__btn
-      = link_to "#{current_user.nickname}", "/users/#{current_user.id}"
+    %ul.menu
+      %li.menu__single
+        = icon('fas', 'user')
+        = "#{current_user.nickname}"
+        %ul.menu__second-level
+          %li
+            = link_to "Logout", destroy_user_session_path, method: :delete
+          %li
+            = link_to "New post", new_book_path,data: {"turbolinks" => false}, class: "seller_btn" 
+          %li
+            = link_to "My page", "/users/#{current_user.id}"
   - else
-    .header__btn
-      = link_to "ログイン", new_user_session_path
-    .header__btn
-      = link_to "新規登録", new_user_registration_path
-
-.form
-  .searchForm
-    = form_with(url: "/books/searches", local: true, method: :get, class: "form-contents") do |f|
-      %h4.form-contents__name
-        投稿を検索
-      = f.text_field :keyword, placeholder: "タイトルを入力", autofocus: true, class: "form-contents__text"
-      = f.submit "検索", class: "form-contents__btn"
+    %ul.menu
+      %li.menu__single
+        = icon('fas', 'user')
+        %ul.menu__second-level
+          %li
+            = link_to "ログイン", new_user_session_path
+          %li
+            = link_to "新規登録", new_user_registration_path
+  .form
+    .searchForm
+      = form_with(url: "/books/searches", local: true, method: :get, class: "form-contents") do |f|
+        %h4.form-contents__name 投稿を検索
+        = f.text_field :keyword, placeholder: "タイトルを入力", autofocus: true, class: "form-contents__text"
+        = f.submit "検索", class: "form-contents__btn"
 .bookList
-  .bookList__header
-    投稿一覧
+  .bookList__title 
+    Books       
+  .bookList__header 
+    検索結果
   %ul.books
     - @books.each do |book|
       %li.book
         .book__image
-          = link_to "/books/#{book.id}/", method: :get do
+          = link_to "/books/#{book.id}/", method: :get ,data: {"turbolinks" => false}, class: "seller_btn" do
             %img{:src => "#{book.image}", :width => "160", :height => "200"}
         .book__title
           = book.title
+  = paginate(@books)

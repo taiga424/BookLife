@@ -1,0 +1,26 @@
+.contents {
+  .container {
+    height: 100%;
+    width: 60%;
+    padding: 40px;
+    margin-bottom: 70px;
+    h2 {
+      font-size: 35px;
+      border-bottom: 2px double #111;
+      margin-bottom: 50px;
+      padding-bottom: 20px;
+      }
+    #user_remember_me{
+      width: 10%;
+    }
+  }
+}
+
+@media screen and (max-width:767px) {
+  .contents {
+    .container {
+      width: 80%;
+      padding: 20px;
+    }
+  }
+}
