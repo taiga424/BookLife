@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: BookLife_production
-  username: BookLife
-  password: <%= ENV['BOOKLIFE_DATABASE_PASSWORD'] %>
+  database: hoge_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %> 
+  socket: /var/lib/mysql/mysql.sock
