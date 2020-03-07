@@ -1,24 +1,81 @@
-# README
+# BookLife DB設計
+ 
+## booksテーブル
+ 
+|Column|Type|Options|
+|------|----|-------|
+|title|string|null: false|
+|image|string|
+|author|string|
+|publisher|string|
+|review|text|null: true|
+|user_id|integer|
+|likes_count|integer|
+ 
+### Association
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- has_many :book_categories, dependent: :destroy
+- has_many :categories, through: :book_categories
+ 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
+ 
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|
+|email|string|null: false|
+|password|string|null: false|
+ 
+### Association
+- has_many :books, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :likes,dependent: :destroy
+ 
 
-Things you may want to cover:
+## commentsテーブル
+ 
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|user|references|null: false, foreign_key: true|
+|book|references|null: false, foreign_key: true|
+ 
+### Association
+- belongs_to :user
+- belongs_to :book
+ 
 
-* Ruby version
+## likesテーブル
+ 
+|Column|Type|Options|
+|------|----|-------|
+|user|references|
+|book|references|
+ 
+### Association
+- belongs_to :user
+- belongs_to :book, counter_cache: :likes_count
 
-* System dependencies
 
-* Configuration
+## categoriesテーブル
+ 
+|Column|Type|Options|
+|------|----|-------|
+|name|string|
+ 
+### Association
+- has_many :book_categories
+- has_many :books, through: :book_categories
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## book_categoriesテーブル
+ 
+|Column|Type|Options|
+|------|----|-------|
+|category|references|foreign_key: true|
+|book|references|foreign_key: true|
+ 
+### Association
+- belongs_to :book
+- belongs_to :category
