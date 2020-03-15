@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'books#index'
+  root 'books#index'
 
   namespace :books do
     resources :comics, only: :index

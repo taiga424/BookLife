@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_143509) do
+ActiveRecord::Schema.define(version: 2020_02_25_071258) do
 
   create_table "book_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "book_id"
@@ -47,17 +47,6 @@ ActiveRecord::Schema.define(version: 2020_03_02_143509) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_comments_on_book_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.boolean "disp_flg"
-    t.datetime "start"
-    t.datetime "end"
-    t.string "allDay"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
