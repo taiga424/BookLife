@@ -1,4 +1,4 @@
-Book_category.create!(
+BookCategory.create!(
   [
     {
       book_id: 1,
