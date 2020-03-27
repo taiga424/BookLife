@@ -1,5 +1,21 @@
-# BookLife DB設計
- 
+# BookLife
+コンセプト：「私のオススメの本をあなたに。」
+投稿されたレビューを見て、気になった本を書店ですぐ探せるように。
+
+# DEMO
+[![Image from Gyazo](https://i.gyazo.com/727c7a5525595617789aac74866afd67.gif)](https://gyazo.com/727c7a5525595617789aac74866afd67)
+
+# Features
+オススメしたい書籍をレビューと共に投稿し、その投稿を見てその書籍に興味を持ったユーザーが、書店ですぐその本を探せるように、タイトル、作者、出版社、ジャンルもひと目でわかるようになっている。
+
+# BackGround
+本屋に務めていたことがあり、その際にお客様から本の場所を聞かれるが、数ある本の中から探すとなると、ある程度の情報がないと探すのに時間がかかってしまう。そこでその書籍の全ての情報が見ればひと目でわかるサイトがあればと思い開発を開始した。
+
+# Note
+初めての開発だったので、シンプルな実装になっている。
+AWSを利用してデプロイ済みだが、まだまだやり残したことが多い。
+
+# DB schema
 ## booksテーブル
  
 |Column|Type|Options|
@@ -79,3 +95,11 @@
 ### Association
 - belongs_to :book
 - belongs_to :category
+
+# Usage
+`git clone https://github.com/taiga424/BookLife.git
+cd BookLife
+rails db:create
+rails db:migrate
+rails db:seed
+rails s`
