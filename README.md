@@ -3,7 +3,7 @@
 投稿されたレビューを見て、気になった本を書店ですぐ探せるように。
 
 # DEMO
-[![Image from Gyazo](https://i.gyazo.com/727c7a5525595617789aac74866afd67.gif)](https://gyazo.com/727c7a5525595617789aac74866afd67)
+[![Image from Gyazo](https://i.gyazo.com/0ec17225e3b4e240007f55d60d16cea1.png)](https://gyazo.com/0ec17225e3b4e240007f55d60d16cea1)
 
 # Features
 オススメしたい書籍をレビューと共に投稿し、その投稿を見てその書籍に興味を持ったユーザーが、書店ですぐその本を探せるように、タイトル、作者、出版社、ジャンルもひと目でわかるようになっている。
@@ -97,9 +97,9 @@ AWSを利用してデプロイ済みだが、まだまだやり残したこと�
 - belongs_to :category
 
 # Usage
-`git clone https://github.com/taiga424/BookLife.git
-cd BookLife
-rails db:create
-rails db:migrate
-rails db:seed
+`git clone https://github.com/taiga424/BookLife.git  
+cd BookLife  
+rails db:create  
+rails db:migrate  
+rails db:seed  
 rails s`
