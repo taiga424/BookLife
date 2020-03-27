@@ -51,5 +51,5 @@ production:
   <<: *default
   database: hoge_production
   username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %> #chat-spadeで使った変数
-  socket: /var/lib/mysql/mysql.sock #必須の指定
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
