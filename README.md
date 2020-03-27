@@ -97,9 +97,9 @@ AWSを利用してデプロイ済みだが、まだまだやり残したこと�
 - belongs_to :category
 
 # Usage
-`git clone https://github.com/taiga424/BookLife.git<br>
-cd BookLife<br>
-rails db:create<br>
-rails db:migrate<br>
-rails db:seed<br>
-rails s`
+`git clone https://github.com/taiga424/BookLife.git`
+`cd BookLife`
+`rails db:create`
+`rails db:migrate`
+`rails db:seed`
+`rails s`
